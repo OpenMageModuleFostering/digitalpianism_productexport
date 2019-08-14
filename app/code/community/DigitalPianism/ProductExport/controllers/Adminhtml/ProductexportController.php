@@ -1,8 +1,8 @@
 <?php
 /**
- * Class DigitalPianism_ProductExport_Adminhtml_IndexController
+ * Class DigitalPianism_ProductExport_Adminhtml_ProductexportController
  */
-class DigitalPianism_ProductExport_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
+class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mage_Adminhtml_Controller_Action
 {
     public function massExportAction()
     {

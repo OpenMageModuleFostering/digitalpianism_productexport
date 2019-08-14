@@ -2,7 +2,7 @@
 <config>
     <modules>
         <DigitalPianism_ProductExport>
-            <version>1.1.0</version>
+            <version>1.1.1</version>
         </DigitalPianism_ProductExport>
     </modules>
     <global>
@@ -14,13 +14,13 @@
     </global>
     <admin>
         <routers>
-            <productexport>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>DigitalPianism_ProductExport</module>
-                    <frontName>productexport</frontName>
+                    <modules>
+                        <DigitalPianism_ProductExport before="Mage_Adminhtml">DigitalPianism_ProductExport_Adminhtml</DigitalPianism_ProductExport>
+                    </modules>
                 </args>
-            </productexport>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>

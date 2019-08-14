@@ -12,7 +12,7 @@ class DigitalPianism_ProductExport_Model_Observer
 
         $block->getMassactionBlock()->addItem('productexport', array(
             'label' => 'Export to CSV',
-            'url' => $block->getUrl('productexport/adminhtml_index/massExport')
+            'url' => $block->getUrl('adminhtml/productexport/massExport')
         ));
     }
 }

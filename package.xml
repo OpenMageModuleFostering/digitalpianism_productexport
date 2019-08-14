@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>DigitalPianism_ProductExport</name>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
@@ -24,11 +24,11 @@
 &#xD;
 &lt;p&gt;Install the module manually or via Magento Connect&lt;/p&gt;&#xD;
 &lt;p&gt;Then login to the backend and flush your cache&lt;/p&gt;</description>
-    <notes>- Original release</notes>
+    <notes>- Modify the admin route regarding Magento patch SUPEE-6788</notes>
     <authors><author><name>Digital Pianism</name><user>digitalpianism</user><email>contact@digital-pianism.com</email></author></authors>
-    <date>2015-08-06</date>
-    <time>14:46:59</time>
-    <contents><target name="magecommunity"><dir name="DigitalPianism"><dir name="ProductExport"><dir name="Model"><file name="Observer.php" hash="60c6150cd05a76d0c6909db9b26dcea1"/></dir><dir name="Test"><dir name="Config"><file name="Main.php" hash="c6319b41e434f96795ffc3111529540d"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><file name="IndexController.php" hash="32c08372f0c7d1c822b21fcceae572ef"/></dir></dir><dir name="etc"><file name="config.xml" hash="6cf66c6c887fab8c202293ffb2182eb7"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="DigitalPianism_ProductExport.xml" hash="6cdbc2897d42c0d1d4d682ad613e244f"/></dir></target></contents>
+    <date>2015-10-23</date>
+    <time>16:34:19</time>
+    <contents><target name="magecommunity"><dir name="DigitalPianism"><dir name="ProductExport"><dir name="Model"><file name="Observer.php" hash="08a15dccb28bd10f5ea28768bb957a94"/></dir><dir name="Test"><dir name="Config"><file name="Main.php" hash="c6319b41e434f96795ffc3111529540d"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><file name="ProductexportController.php" hash="57197adb878d9ccd8c96906cbb441ee6"/></dir></dir><dir name="etc"><file name="config.xml" hash="39159174c7140aee9a6cebbed4cd8ec3"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="DigitalPianism_ProductExport.xml" hash="6cdbc2897d42c0d1d4d682ad613e244f"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>4.1.0</min><max>6.0.0</max></php></required></dependencies>
 </package>
