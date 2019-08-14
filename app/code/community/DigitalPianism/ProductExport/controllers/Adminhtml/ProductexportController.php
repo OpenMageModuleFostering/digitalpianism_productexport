@@ -22,7 +22,7 @@ class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mag
         }
         else {
             //write headers to the csv file
-            $content = "id,name,url,sku,price,special_price,description,short_description,main_image\n";
+            $content = "id,name,url,sku,price,special_price,description,short_description,main_image,qty\n";
             try {
 
                 $collection = Mage::getResourceModel('catalog/product_collection')
@@ -30,6 +30,15 @@ class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mag
                     ->addAttributeToSelect('entity_id')
                     ->addAttributeToSelect('sku')
                     ->addAttributeToSelect('product_url');
+
+                if (Mage::helper('catalog')->isModuleEnabled('Mage_CatalogInventory')) {
+                    $collection->joinField('qty',
+                        'cataloginventory/stock_item',
+                        'qty',
+                        'product_id=entity_id',
+                        '{{table}}.stock_id=1',
+                        'left');
+                }
 
                 if ($store->getId()) {
                     $collection->addStoreFilter($store);
@@ -91,7 +100,7 @@ class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mag
                     } else {
                         $productImage = Mage::getModel('catalog/product_media_config')->getMediaUrl($product->getImage());
                     }
-                    $content .= "\"{$product->getId()}\",\"{$product->getName()}\",\"{$product->setStoreId($store->getId())->getProductUrl()}\",\"{$product->getSku()}\",\"{$product->getPrice()}\",\"{$product->getSpecialPrice()}\",\"{$product->getDescription()}\",\"{$product->getShortDescription()}\",\"{$productImage}\"\n";
+                    $content .= "\"{$product->getId()}\",\"{$product->getName()}\",\"{$product->setStoreId($store->getId())->getProductUrl()}\",\"{$product->getSku()}\",\"{$product->getPrice()}\",\"{$product->getSpecialPrice()}\",\"{$product->getDescription()}\",\"{$product->getShortDescription()}\",\"{$productImage}\",\"{$product->getQty()}\"\n";
                 }
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
