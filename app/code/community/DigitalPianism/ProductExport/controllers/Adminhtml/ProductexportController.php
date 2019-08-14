@@ -22,7 +22,7 @@ class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mag
         }
         else {
             //write headers to the csv file
-            $content = "id,name,url,sku,price,special_price\n";
+            $content = "id,name,url,sku,price,special_price,description,short_description,main_image\n";
             try {
 
                 $collection = Mage::getResourceModel('catalog/product_collection')
@@ -36,6 +36,30 @@ class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mag
                     $collection->joinAttribute(
                         'name',
                         'catalog_product/name',
+                        'entity_id',
+                        null,
+                        'inner',
+                        $store->getId()
+                    );
+                    $collection->joinAttribute(
+                        'description',
+                        'catalog_product/description',
+                        'entity_id',
+                        null,
+                        'inner',
+                        $store->getId()
+                    );
+                    $collection->joinAttribute(
+                        'short_description',
+                        'catalog_product/short_description',
+                        'entity_id',
+                        null,
+                        'inner',
+                        $store->getId()
+                    );
+                    $collection->joinAttribute(
+                        'image',
+                        'catalog_product/image',
                         'entity_id',
                         null,
                         'inner',
@@ -58,11 +82,16 @@ class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mag
                         $store->getId()
                     );
                 } else {
-                    $collection->addAttributeToSelect(array('name','price','special_price'));
+                    $collection->addAttributeToSelect(array('name','price','special_price','description','short_description','image'));
                 }
 
                 foreach ($collection as $product) {
-                    $content .= "\"{$product->getId()}\",\"{$product->getName()}\",\"{$product->setStoreId($store->getId())->getProductUrl()}\",\"{$product->getSku()}\",\"{$product->getPrice()}\",\"{$product->getSpecialPrice()}\"\n";
+                    if ("no_selection" == $product->getImage()) {
+                        $productImage = "";
+                    } else {
+                        $productImage = Mage::getModel('catalog/product_media_config')->getMediaUrl($product->getImage());
+                    }
+                    $content .= "\"{$product->getId()}\",\"{$product->getName()}\",\"{$product->setStoreId($store->getId())->getProductUrl()}\",\"{$product->getSku()}\",\"{$product->getPrice()}\",\"{$product->getSpecialPrice()}\",\"{$product->getDescription()}\",\"{$product->getShortDescription()}\",\"{$productImage}\"\n";
                 }
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());

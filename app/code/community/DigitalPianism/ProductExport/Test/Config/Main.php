@@ -12,7 +12,7 @@ class DigitalPianism_ProductExport_Test_Config_Main extends EcomDev_PHPUnit_Test
     {
         // Testing configuration
         $this->assertModuleCodePool('local');
-        $this->assertModuleVersion("1.2.0");
+        $this->assertModuleVersion("1.3.0");
         $this->assertModuleDepends('Mage_Adminhtml');
     }
 
