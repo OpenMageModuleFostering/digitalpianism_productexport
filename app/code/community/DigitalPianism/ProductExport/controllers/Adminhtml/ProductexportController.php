@@ -4,6 +4,14 @@
  */
 class DigitalPianism_ProductExport_Adminhtml_ProductexportController extends Mage_Adminhtml_Controller_Action
 {
+    /**
+     * @return mixed
+     */
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('catalog/products');
+    }
+
     public function massExportAction()
     {
         $productIds = $this->getRequest()->getParam('product');
