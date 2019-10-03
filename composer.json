@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/DigitalPianism_ProductExport",
+    "name": "openmage-module-fostering\/digitalpianism_productexport",
     "type": "magento-module",
-    "license": "OSL-v3.0",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "This module adds a new mass action to the Magento admin catalog grid to mass export products to CSV.",
     "authors": [
